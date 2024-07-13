@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Suikat Game</title>
+        <script src="matter.min.js"></script>
+        <script defer src="main.js"></script>
+        <style>
+            body {
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+
+            #overlay {
+                display: none;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.6);
+            }
+
+            #dead {
+                display: none;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                flex-direction: column;
+            }
+
+            #dead img {
+                margin-bottom: 20px;
+            }
+
+            .visible {
+                display: flex !important;
+            }
+
+            .row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="dead">
+            <div style="background-color: white; padding: 4px">
+                <img src="/assets/dead.gif" />
+                <p id="end-score"></p>
+                <button>Replay</button>
+            </div>
+        </div>
+        <div id="overlay"></div>
+        <h1>Suikat Game</h1>
+        <div class="row">
+            <div id="game"></div>
+            <div id="score"></div>
+        </div>
+    </body>
+</html>

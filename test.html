@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="matter.min.js"></script>
+    <script>
+        onload = (e) => {
+            // module aliases
+            var Engine = Matter.Engine,
+                Render = Matter.Render,
+                Runner = Matter.Runner,
+                Bodies = Matter.Bodies,
+                Body = Matter.Body,
+                Mouse = Matter.Mouse,
+                Composite = Matter.Composite;
+
+            // create an engine
+            var engine = Engine.create();
+
+            // create a renderer
+            var render = Render.create({
+                element: document.body,
+                engine: engine
+            });
+
+            let mouse = Mouse.create(document.body);
+
+            // create two boxes and a ground
+            var boxA = Bodies.circle(400, 200, 40, {isStatic: true});
+
+            // add all of the bodies to the world
+            Composite.add(engine.world, [boxA, boxB, ground]);
+
+            document.onmousemove = (e) => {
+                Body.setPosition(boxA, {
+                    x: mouse.position.x,
+                    y: mouse.position.y
+                });
+            }
+
+            document.onmousedown = (e) => {
+                Body.setStatic(boxA, false);
+            }
+
+            // run the renderer
+            Render.run(render);
+
+            render.mouse = mouse;
+
+            // create runner
+            var runner = Runner.create();
+
+            // run the engine
+            Runner.run(runner, engine);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
